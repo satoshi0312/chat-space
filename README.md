@@ -21,3 +21,15 @@
 - has_many :members
 - has_many :groups through :members
 - has_many :messages
+
+## messageテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|text||
+|image|string||
+|user|reference|null: false, foreign_key: true|
+|group|reference|null: false, goreign_key: true|
+
+### Association
+- belongs_to :user
