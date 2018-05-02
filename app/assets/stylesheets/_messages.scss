@@ -6,16 +6,18 @@ header{
   width: 100%;
   .header{
     height: 120px;
-    background-color: #38AEF0;
+    background-color: white;
     color: white;
     width: calc(100% - 300px);
     float: right;
       .group{
+        color: #434A54;
         padding-top: 35px;
         font-size: 20px;
         margin-left: 40px;
       }
       .member{
+        color: #434A54;
         padding-top: 15px;
         font-size: 12px;
         float: left;
@@ -39,3 +41,59 @@ header{
     padding: 0 20px;
   }
 }
+
+.contents {
+  background-color: #AAA;
+  color: white;
+  height: calc(100vh - 120px);
+  width: 100%;
+  .left-content {
+    background-color: #2f3e51;
+    height: 100%;
+    width: 260px;
+    padding: 0 20px;
+    float: left;
+    .group__name{
+      margin-top: 20px;
+      font-size: 15px;
+    }
+    .group__text{
+      margin-top: 5px;
+      font-size: 11px;
+    }
+  }
+  .contents-main {
+    background-color: #eee;
+    height: calc(100% - 46px);
+    width: calc(100% - 300px);
+    padding-top: 46px;
+    float: right;
+    position: relative;
+    .user__name{
+      color: #434A54;
+      font-size: 16px;
+      margin: 0 40px;
+    }
+    .message{
+      color: #434A54;
+      padding-top: 10px;
+      font-size: 14px;
+      margin: 0 40px;
+    }
+  }
+  .footer {
+    background-color: #ccc;
+    color: black;
+    height: 90px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    .input{
+      height: 50px;
+      width: calc(100% - 80px);
+      margin: 20px 40px;
+      font-size: 16px;
+    }
+  }
+}
+

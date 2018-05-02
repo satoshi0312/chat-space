@@ -1,17 +1,24 @@
-%header.clearfix
-  %div.header
+%header
+  .header
     %h4.group
       sampleグループ
     %ul.member
       %h5 Member :
       %li メンバー1
       %li メンバー2
-  %div.header-left
+  .header-left
     アカウント名
-%div.contents
-  %div.left-content
-    group名
-  %div.contents-main
-    main-text
+
+.contents
+  .left-content
+    .group__name
+      グループ名
+    .group__text
+      まだメッセージはありません。
+  .contents-main
+    .user__name
+      ユーザーネーム
+    .message
+      テキスト
     %footer.footer
-      入力画面
+      %input.input
