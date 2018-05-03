@@ -15,13 +15,13 @@ header{
     float: right;
     padding:0 40px;
     border-bottom: 2px #eee solid;
-      .group{
+      .chat__group{
         color: $navy;
         margin-top: 35px;
         font-size: 20px;
         float: left;
       }
-      .member{
+      .chat__group__member{
         color: $navy;
         font-size: 12px;
         float: left;
@@ -33,7 +33,7 @@ header{
           float: left;
         }
       }
-      .edit-link{
+      .chat__group__edit-link{
         color: $skyblue;
         padding: 12.5px 20px;
         border: 2px solid $skyblue;
@@ -46,7 +46,7 @@ header{
         }
       }
   }
-  .header-left{
+  .account{
     height: 120px;
     width: 260px;
     background-color: #253141;
@@ -69,7 +69,7 @@ header{
   color: $white;
   height: calc(100vh - 120px);
   width: 100%;
-  .left-content {
+  .group {
     background-color: #2f3e51;
     height: 100%;
     width: 260px;
@@ -84,26 +84,26 @@ header{
       font-size: 11px;
     }
   }
-  .contents-main {
+  .chat-main {
     background-color: #f5f5f5;
     height: calc(100% - 46px);
     width: calc(100% - 300px);
     padding-top: 46px;
     float: right;
     position: relative;
-    .user__name{
+    .chat-main__user_name{
       color: $navy;
       display: inline;
       font-size: 16px;
       margin: 0 40px;
       float: left;
     }
-    .time{
+    .chat-main__time{
       font-size: 10px;
       float: left;
       color: #aaa;
     }
-    .message{
+    .chat-main__message{
       color: $navy;
       padding-top: 10px;
       font-size: 14px;
@@ -111,7 +111,7 @@ header{
       clear: both;
     }
   }
-  .footer {
+  .message {
     background-color: #ddd;
     color: black;
     height: 50px;
@@ -119,7 +119,7 @@ header{
     position: absolute;
     bottom: 0;
     padding: 20px 40px;
-    .input{
+    .message__text{
       height: 50px;
       width: calc(100% - 110px);
       padding-left: 10px;
@@ -133,13 +133,13 @@ header{
         bottom: 35px;
       }
     }
-    .img-upload{
+    .message__img{
     display: none;
     }
     button{
       color: $white;
     }
-    .send-button{
+    .message__btn{
       color: $white;
       background-color: $skyblue;
       padding: 12.5px 20px;
