@@ -1,13 +1,20 @@
 %header
   .header
-    %h4.group
-      sampleグループ
+    .groupa
+      .group
+        sampleグループ
+      .edit-link
+        =link_to 'Edit', root_path
     %ul.member
       %h5 Member :
       %li メンバー1
       %li メンバー2
   .header-left
     アカウント名
+    = link_to root_path do
+      %i.fa.fa-cog
+    = link_to root_path do
+      %i.fa.fa-edit
 
 .contents
   .left-content
@@ -18,7 +25,13 @@
   .contents-main
     .user__name
       ユーザーネーム
+    .time
+      2018/05/03 14:26
     .message
       テキスト
     %footer.footer
-      %input.input
+      %input.input{placeholder: "type a message"}
+      %label{for: "img-upload"}
+        %i.fa.fa-image
+      %input#img-upload.img-upload{type: 'file'}
+      %button.send-button{type: 'submit'} SEND
