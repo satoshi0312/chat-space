@@ -9,8 +9,8 @@
       %li メンバー1
       %li メンバー2
   .account
-    アカウント名
-    = link_to root_path do
+    = current_user.name
+    = link_to edit_user_path(current_user.id),method: :get do
       %i.fa.fa-cog
     = link_to root_path do
       %i.fa.fa-edit
