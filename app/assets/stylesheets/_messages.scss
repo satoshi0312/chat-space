@@ -117,7 +117,7 @@ header{
       clear: both;
     }
   }
-  .message {
+  .form {
     background-color: #ddd;
     color: black;
     height: 50px;
@@ -125,28 +125,30 @@ header{
     position: absolute;
     bottom: 0;
     padding: 20px 40px;
-    .message__text{
+    .form__message{
       height: 50px;
       width: calc(100% - 110px);
       padding-left: 10px;
       font-size: 16px;
       position: relative;
+      float: left;
     }
-    label{
-      .fa-image{
+    .form__mask{
+      .icon{
         position: absolute;
         right: 150px;
         bottom: 35px;
       }
+      .hidden{
+      display: none;
+      }
     }
-    .message__img{
-    display: none;
-    }
-    button{
+    // button{
+    //   color: $white;
+    // }
+    .form__submit{
       color: $white;
-    }
-    .message__btn{
-      color: $white;
+      width: 80px;
       background-color: $skyblue;
       padding: 12.5px 20px;
       border: 2px solid $skyblue;

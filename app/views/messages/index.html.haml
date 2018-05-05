@@ -34,9 +34,11 @@
       2018/05/03 14:26
     .chat-main__message
       テキスト
-    %footer.message
-      %input.message__text{placeholder: "type a message"}
-      %label{for: "img-upload"}
-        %i.fa.fa-image
-      %input#img-upload.message__img{type: 'file'}
-      %button.message__btn{type: 'submit'} SEND
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
