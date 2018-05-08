@@ -1,0 +1,19 @@
+.message
+  .upper-message
+    .upper-message__user-name
+      = message.user.name
+    .upper-message__date
+      = format_posted_time(message.created_at)
+  .lower-meesage
+    - if message.body.present?
+      %p.lower-message__content
+        = message.body
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+
+    / - @messages.each do |message|
+    /   .chat-main__user_name
+    /     = message.user.name
+    /   .chat-main__time
+    /     = message.created_at
+    /   .chat-main__message
+    /     = message.body

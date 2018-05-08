@@ -24,19 +24,24 @@
           .group__name
             = group.name
           .group__message
-            メッセージはまだありません。
+            = group.show_last_message
     .group__text
 
   .chat-main
-    .chat-main__user_name
-      ユーザーネーム
-    .chat-main__time
-      2018/05/03 14:26
-    .chat-main__message
-      テキスト
-    %footer.message
-      %input.message__text{placeholder: "type a message"}
-      %label{for: "img-upload"}
-        %i.fa.fa-image
-      %input#img-upload.message__img{type: 'file'}
-      %button.message__btn{type: 'submit'} SEND
+    = render partial: 'message', collection: @messages
+    / - @messages.each do |message|
+    /   .chat-main__user_name
+    /     = message.user.name
+    /   .chat-main__time
+    /     = message.created_at
+    /   .chat-main__message
+    /     = message.body
+
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
