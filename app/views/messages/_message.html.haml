@@ -8,6 +8,8 @@
     - if message.body.present?
       %p.lower-message__content
         = message.body
+    %br
+    %br
     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
 
     / - @messages.each do |message|
