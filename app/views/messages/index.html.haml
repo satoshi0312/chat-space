@@ -1,13 +1,14 @@
 %header
   .header
     .chat__group
-      sampleグループ
+      = @group.name
     .chat__group__edit-link
-      =link_to 'Edit', root_path
+      =link_to 'Edit', edit_group_path(@group)
     %ul.chat__group__member
       %h5 Member :
-      %li メンバー1
-      %li メンバー2
+      - @group.users.each do |user|
+        %li
+          = user.name
   .account
     = render partial: 'shared/side-header'
 
