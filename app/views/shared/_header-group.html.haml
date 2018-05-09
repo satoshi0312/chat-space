@@ -1,0 +1,9 @@
+.chat__group
+  = group.name
+.chat__group__edit-link
+  =link_to 'Edit', edit_group_path(@group)
+%ul.chat__group__member
+  %h5 Member :
+  - group.users.each do |user|
+    %li
+      = user.name
