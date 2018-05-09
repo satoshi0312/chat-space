@@ -10,38 +10,16 @@
       %li メンバー2
   .account
     = render partial: 'shared/side-header'
-    / = current_user.name
-    / = link_to edit_user_path(current_user.id),method: :get do
-    /   %i.fa.fa-cog
-    / = link_to new_group_path do
-    /   %i.fa.fa-edit
 
 .contents
   .group
     .group__name
-      - current_user.groups.each do |group|
-        = link_to group_messages_path(group) do
-          .group__name
-            = group.name
-          .group__message
-            = group.show_last_message
-    .group__text
+      = render partial: "shared/side-content"
 
-  .chat-main
-    = render partial: 'message', collection: @messages
-    / - @messages.each do |message|
-    /   .chat-main__user_name
-    /     = message.user.name
-    /   .chat-main__time
-    /     = message.created_at
-    /   .chat-main__message
-    /     = message.body
+  .chat__messages
+    .chat-main
+      = render partial: 'message', collection: @messages
 
     .form
-      = form_for [@group, @message] do |f|
-        = f.text_field :body, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-          = f.submit 'Send', class: 'form__submit'
+      = render partial: 'shared/form'
+
