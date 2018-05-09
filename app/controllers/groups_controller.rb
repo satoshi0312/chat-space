@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   def index
+    redirect_to :new_user_session_path unless user_signed_in?
   end
 
   def new

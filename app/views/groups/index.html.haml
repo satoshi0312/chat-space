@@ -1,31 +1,14 @@
 %header
-  .header
-    .chat__group
-      sampleグループ
-    .chat__group__edit-link
-      =link_to 'Edit', root_path
-    %ul.chat__group__member
-      %h5 Member :
-      %li メンバー1
-      %li メンバー2
   .account
     = render partial: 'shared/side-header'
 
 .contents
   .group
     .group__name
-      = render partial: 'shared/side-content'
-
-  .chat-main.clearfix
-    .chat-main__user_name
-      ユーザーネーム
-    .chat-main__time
-      2018/05/03 14:26
-    .chat-main__message
-      テキスト
-    %footer.message
-      %input.message__text{placeholder: "type a message"}
-      %label{for: "img-upload"}
-        %i.fa.fa-image
-      %input#img-upload.message__img{type: 'file'}
-      %button.message__btn{type: 'submit'} SEND
+      = render partial: "shared/side-content"
+      / - current_user.groups.each do |group|
+      /   = link_to group_messages_path(group) do
+      /     .group__name
+      /       = group.name
+      /     .group__message
+      /       = group.show_last_message
