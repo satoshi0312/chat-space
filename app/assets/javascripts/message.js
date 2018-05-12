@@ -14,13 +14,14 @@ $(function(){
                       ${message.body}
                   </div>
                 </div>
+                ${(message.image.url) == null ? "" : html_image}
               </div>`
-    // var html_image =
-    //               `<div class="lower-message__image">
-    //                 <img src="${message.image}", alt="">
-    //               </div>`
 
-    // html = (message.image) ? html = $(html_body).append(html_image + `</div></div>`) : html = $(html_body).append(`</div></div>`)
+    var html_image =
+                  `<div class="lower-message__image">
+                    <img src="${message.image.url}", alt="">
+                  </div>`
+
     return html;
   }
 
@@ -29,9 +30,10 @@ $(function(){
     // $form = $("#new_message");
     e.preventDefault();
     var formData =  new FormData(this);
+    var url = $(this).attr('action');
     $.ajax({
       type: 'POST',
-      url: location.href,
+      url: url,
       data: formData,
       dataType: 'json',
       processData: false,
@@ -40,11 +42,13 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chat-main').append(html);
-      $('.form__message').val('');
       $('.chat-main').animate({scrollTop: $('.chat-main')[0].scrollHeight});
-      $('.form__submit').prop('disabled', false)
+      $('.form__submit').prop('disabled', false);
+      $('.new_message')[0].reset();
     })
     .fail(function(data) {
+      $('form')[0].reset();
+      $('.form__submit').prop('disabled', false);
       alert('error');
     })
   })
