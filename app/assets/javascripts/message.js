@@ -24,8 +24,6 @@ $(function(){
   }
 
   $('#new_message').on('submit', function(e){
-    // var formData = new FormData(this);
-    // $form = $("#new_message");
     e.preventDefault();
     var formData =  new FormData(this);
     var url = $(this).attr('action');
