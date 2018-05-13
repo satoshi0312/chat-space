@@ -37,8 +37,9 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
+      var target = $('.chat-main')[0]
       $('.chat-main').append(html);
-      $('.chat-main').animate({scrollTop: $('.chat-main')[0].scrollHeight});
+      $('.chat-main').animate({scrollTop: target.scrollHeight});
       $('.form__submit').prop('disabled', false);
       $('.new_message')[0].reset();
     })
