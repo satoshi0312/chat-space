@@ -1,8 +1,12 @@
 $(function(){
   function buildHTML(message){
-    var image =   `<div class="lower-message__image">
+
+    var image = ""
+    if((message.image.url) !== null){
+      image = `<div class="lower-message__image">
                     <img src="${message.image.url}", alt="">
-                  </div>`
+                  </div>`}
+
     var html =`<div class="message">
                 <div class="upper-message">
                   <div class="upper-message__user-name">
@@ -16,7 +20,7 @@ $(function(){
                   <div class='lower-message__content'>
                     ${message.body}
                   </div>
-                  ${(message.image.url) == null ? "" : image}
+                  ${image}
                 </div>
               </div>`
 
@@ -41,10 +45,10 @@ $(function(){
       $('.chat-main').append(html);
       $('.chat-main').animate({scrollTop: target.scrollHeight});
       $('.form__submit').prop('disabled', false);
-      $('.new_message')[0].reset();
+      $('#new_message')[0].reset();
     })
     .fail(function(data) {
-      $('form')[0].reset();
+      $('#new_message')[0].reset();
       $('.form__submit').prop('disabled', false);
       alert('error');
     })
