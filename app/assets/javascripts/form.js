@@ -42,4 +42,16 @@ $(function(){
       alert('ユーザ検索に失敗しました')
     })
   });
+
+  search_result.on('click', '.user-search-add', function(){
+    var user_id = $(this).data('user-id');
+    var user_name = $(this).data('user-name')
+    $(this).parent().remove();
+    html = buildGroupMemmber(user_id, user_name)
+    $('#chat-group-users').append(html);
+  })
+
+  $(document).on('click', '.js-remove-btn', function(){
+    $(this).parent().remove();
+  })
 })
