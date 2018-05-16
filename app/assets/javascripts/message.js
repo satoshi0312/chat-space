@@ -1,13 +1,37 @@
 $(function(){
-  function buildHTML(message){
+  var interval = setInterval(function(){
+    var latest_id = $('.message:last').data('message-id');
+    var target = $('.chat-main')[0];
+    if (location.href.match(/\/groups\/\d+\/messages/)) {
+      $.ajax({
+        url: location.href,
+        data: {id: latest_id},
+        dataType: 'json',
+        type: 'GET',
+      })
+      .done(function(messages){
+        var insertHTML = '';
+        messages.forEach(function(message){
+          insertHTML += buildHTML(message);
+        });
+        $('.chat-main').append(insertHTML);
+        $('.chat-main').animate({scrollTop: target.scrollHeight});
+      })
+      .fail(function(messages){
+        alert('自動更新に失敗しました。')
+      });
+    } else {
+      clearInterval(interval);
+    }}, 5000);
 
+  function buildHTML(message){
     var image = ""
     if((message.image.url) !== null){
       image = `<div class="lower-message__image">
                     <img src="${message.image.url}", alt="">
                   </div>`}
 
-    var html =`<div class="message">
+    var html =`<div class="message" data-message-id="${message.id}">
                 <div class="upper-message">
                   <div class="upper-message__user-name">
                     ${message.name}
