@@ -20,27 +20,32 @@ $(function(){
 
   search_input.on('keyup', function(){
     var input = search_input.val()
-    $.ajax({
-      url: '/users',
-      type: "GET",
-      data: {keyword: input},
-      dataType: 'json'
-    })
-    .done(function(users){
+    if(input.length === 0 ){
       search_result.empty();
-      if (users.length !== 0){
-        users.forEach(function(user){
-          html = buildHTML(user)
-          search_result.append(html)
-        })
-      }
-      else {
-        search_result.append(NoUserHTML)
-      }
-    })
-    .fail(function(){
-      alert('ユーザ検索に失敗しました')
-    })
+    }
+    else {
+      $.ajax({
+        url: '/users',
+        type: "GET",
+        data: {keyword: input},
+        dataType: 'json'
+      })
+      .done(function(users){
+        search_result.empty();
+        if (users.length !== 0 ){
+          users.forEach(function(user){
+            html = buildHTML(user)
+            search_result.append(html)
+          })
+        }
+        else {
+          search_result.append(NoUserHTML)
+        }
+      })
+      .fail(function(){
+        alert('ユーザ検索に失敗しました')
+      })
+    }
   });
 
   search_result.on('click', '.user-search-add', function(){
