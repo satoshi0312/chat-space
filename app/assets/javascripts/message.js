@@ -26,9 +26,9 @@ $(function(){
 
   function buildHTML(message){
     var image = ""
-    if((message.image.url) !== null){
+    if((message.image) !== null){
       image = `<div class="lower-message__image">
-                    <img src="${message.image.url}", alt="">
+                    <img src="${message.image}", alt="">
                   </div>`}
 
     var html =`<div class="message" data-message-id="${message.id}">
@@ -53,12 +53,12 @@ $(function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var formData =  new FormData(this);
-    var url = $(this).attr('action');
+    var formData = new FormData(this);
+    var url = location.href;
     $.ajax({
-      type: 'POST',
       url: url,
       data: formData,
+      type: 'POST',
       dataType: 'json',
       processData: false,
       contentType: false
