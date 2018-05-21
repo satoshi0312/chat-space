@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     else
       respond_to do |format|
         format.html {redirect_to group_messages_path(@group), notice: 'メッセージが送信されませんでした'}
-        # format.json
+        format.json
       end
     end
   end
